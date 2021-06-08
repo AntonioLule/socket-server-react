@@ -10,32 +10,8 @@
 
 <body class="container">
 
-    <h1 class="mt-5">Quetzal</h1>
-    <hr>
+    <h1 class="mt-5">Quetzalcoatl </h1>
 
-    <form id="miFormulario">
-
-        <div class="row">
-            <div class="col-8">
-
-                <input type="text" id="txtMensaje" class="form-control" placeholder="Mensaje">
-
-            </div>
-
-            <div class="col-4">
-                <button type="submit" class="btn btn-primary">
-                    Enviar
-                </button>
-            </div>
-        </div>
-
-    </form>
-
-    <div class="row">
-        <div class="col">
-            <ul id="misMensajes"></ul>
-        </div>
-    </div>
 
 
 
@@ -43,22 +19,9 @@
     <script>
         const socket = io('http://localhost:8080');
 
-        const formulario = document.querySelector('#miFormulario');
-        const mensajes = document.querySelector('#misMensajes');
-        const txtMensaje = document.querySelector('#txtMensaje');
-
-        formulario.addEventListener('submit', (ev) => {
-            ev.preventDefault();
-
-            const texto = txtMensaje.value;
-            socket.emit('mensaje-to-server', {
-                texto
-            });
-
-        });
-
-        socket.on('mensaje-from-server', (data) => {
-            mensajes.innerHTML += `<li>  ${data.texto}   </li>`;
+        // obtener las bandas
+        socket.on('current-bands', (data) => {
+            console.log(data);
         });
     </script>
 </body>

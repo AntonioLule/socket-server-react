@@ -25,7 +25,7 @@ class Server {
         this.app.use( express.static( path.resolve( __dirname, '../public')));
 
         //CORS
-        this.app.use(cors());
+        this.app.use( cors() );
 
     }
 
